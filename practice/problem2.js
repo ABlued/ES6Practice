@@ -21,3 +21,39 @@ console.log(theNumbers);
 for(let i = 0; i < count; i++){
     getRandomNumber(maxNumber);
 }
+
+// 더욱 멋있는 풀이가 있다.
+
+const SETTING = {
+
+    name: 'lotto',
+
+    count: 6,
+
+    maxNumber: 45,
+
+    lotto : new Set()
+
+}
+
+
+
+;(function ({ maxNumber, count, lotto }) {
+
+    
+
+    while(lotto.size < count) {
+
+        lotto.add(Math.round(Math.random() * maxNumber));
+
+    }
+
+
+
+    const result = Array.from(lotto).sort((a, b) => a - b);
+
+
+
+    console.log(result);
+
+}(SETTING));
