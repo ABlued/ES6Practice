@@ -2,30 +2,44 @@
 // 데이터 + HTML문자열의 결합이 필요하기 때문에 사용되는 것!
 
 const data = [
-    {
-        name : 'coffee-bean',
-        order : true,
-        items: ['아메리카노', '우유', '그린티']
-    },
-    {
-        name : 'starbucks',
-        order : false,
-    },
-    {
-        name : 'coffee-king',
-        order : true,
-        items : ['americano', 'latte']
-    },
-]
+  {
+    name: 'coffee-bean',
+    order: true,
+    items: ['아메리카노', '우유', '그린티'],
+  },
+  {
+    name: 'starbucks',
+    order: false,
+  },
+  {
+    name: 'coffee-king',
+    order: true,
+    items: ['americano', 'latte'],
+  },
+];
 function fn(tags, name, items) {
-    console.log(tags);
-    if(typeof items === "undefined"){
-        items = "주문가능한 상품이 없습니다.";
-    }
-    return (tags[0] + name + tags[1] + items + tags[2]);
+  console.log(tags);
+  if (typeof items === 'undefined') {
+    items = '주문가능한 상품이 없습니다.';
+  }
+  return tags[0] + name + tags[1] + items + tags[2];
 }
 data.forEach((v) => {
-    const template = fn`<div>welcome ${v.name} !!</div>
+  const template = fn`<div>welcome ${v.name} !!</div>
                         <h2>주문가능항목</h2><div>${v.items}</div>`;
-    console.log(template);
-})
+  console.log(template);
+});
+
+// 태그된 템플릿 리터럴
+
+function taggedFunc(strings, ...expressions) {
+  console.log('strings : ', strings);
+  console.log('expressions :', expressions);
+  return 123;
+}
+const v1 = 10;
+const v2 = 20;
+
+taggedFunc`a-${v1}-b-${v2}-c`;
+taggedFunc`a-${v1}-b-${v2}`;
+taggedFunc`${v1}-b-`;
